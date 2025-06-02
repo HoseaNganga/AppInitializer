@@ -3,7 +3,12 @@ const express = require("express");
 const cors = require("cors");
 
 const app = express();
-app.use(cors()); // allow cross-origin requests (customize in production)
+const corsOptions = {
+  origin: "*",
+  methods: "GET,POST,PUT,DELETE,PATCH,OPTIONS",
+  allowedHeaders: "Content-Type,Authorization",
+};
+app.use(cors(corsOptions)); // allow cross-origin requests (customize in production)
 
 // Route to serve secrets
 app.get("/config", (req, res) => {
